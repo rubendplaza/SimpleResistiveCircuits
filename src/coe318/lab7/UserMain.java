@@ -5,26 +5,9 @@ import java.util.Scanner;
 
 public class UserMain {
 
-    public void addNodes(int node1, int node2, ArrayList nodeList) {
-
-        int greater = Math.max(node1, node2);
-
-        if (greater > nodeList.size() - 1) {
-            for (int i = nodeList.size(); i < greater; i++) {
-                Node nodeToAdd = new Node();
-                nodeList.add(nodeToAdd);
-            }
-        }
-
-    }
-
     public static void main(String[] args) { //TODO change the main to accomodate for the new type of input
 
         Scanner input = new Scanner(System.in);
-
-        System.out.println("ENTER YOUR CIRCUIT ELEMENTS:\n");
-
-        ArrayList<Node> nodeList = new ArrayList<Node>();
 
         String newLine;
         String[] splitLine;
@@ -34,6 +17,12 @@ public class UserMain {
         int node1;
         int node2;
 
+        Node nodeOne;
+        Node nodeTwo;
+
+        Circuit circuit = Circuit.getInstance();
+
+        System.out.println("ENTER YOUR CIRCUIT ELEMENTS:\n");
         newLine = input.nextLine();
 
         while (!(newLine.equals("end"))) {
@@ -43,12 +32,12 @@ public class UserMain {
             node2 = Integer.parseInt(splitLine[2]);
             doubleValue = Double.parseDouble(splitLine[3]);
 
-            //addNodes(node1, node2, nodeList);TODO figure out how to implement this maybe change constructors to accept integers
+            circuit.addNodes(node1, node2);//TODO figure out how to implement this maybe change constructors to accept integers
 
             if (splitLine[0].equals("r")) {
-                resistor = new Resistor(doubleValue, nodeList.get(node1), nodeList.get(node2));
+                resistor = new Resistor(doubleValue, circuit.getNodeList().get(node1), circuit.getNodeList().get(node2));
             } else if (splitLine[0].equals("v")) {
-                voltageSource = new VoltageSource(doubleValue, nodeList.get(node1), nodeList.get(node2));
+                voltageSource = new VoltageSource(doubleValue, circuit.getNodeList().get(node1), circuit.getNodeList().get(node2));
             }
 
         }//end of input

@@ -1,5 +1,6 @@
 package coe318.lab7;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -7,12 +8,13 @@ public class Circuit {
 
     private static Circuit instance = null;
     private ArrayList elements;
+    private ArrayList nodeList;
 
 
     private Circuit(){
 
-        elements = new ArrayList<Resistor>();
-
+        elements = new ArrayList();
+        nodeList = new ArrayList();
 
     }
 
@@ -54,6 +56,23 @@ public class Circuit {
             return true;
         }
 
+    }
+
+    public void addNodes(int node1, int node2) {
+
+        int greater = Math.max(node1, node2);
+
+        if (greater > nodeList.size() - 1) {
+            for (int i = nodeList.size(); i < greater; i++) {
+                Node nodeToAdd = new Node();
+                nodeList.add(nodeToAdd);
+            }
+        }
+
+    }
+
+    public ArrayList<Node> getNodeList(){
+        return nodeList;
     }
 
     @Override
