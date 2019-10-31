@@ -77,7 +77,7 @@ public class Circuit {
 
     @Override
 
-    public String toString(){
+    public String toString(){//todo implement the output they want
 
         String returnString = "";
 

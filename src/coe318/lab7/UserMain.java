@@ -28,16 +28,23 @@ public class UserMain {
         while (!(newLine.equals("end"))) {
 
             splitLine = newLine.split("\\s+");
-            node1 = Integer.parseInt(splitLine[1]);
-            node2 = Integer.parseInt(splitLine[2]);
-            doubleValue = Double.parseDouble(splitLine[3]);
 
-            circuit.addNodes(node1, node2);//TODO figure out how to implement this maybe change constructors to accept integers
+            if(splitLine.equals("spice")){
+                System.out.println(circuit);
+            }
 
-            if (splitLine[0].equals("r")) {
-                resistor = new Resistor(doubleValue, circuit.getNodeList().get(node1), circuit.getNodeList().get(node2));
-            } else if (splitLine[0].equals("v")) {
-                voltageSource = new VoltageSource(doubleValue, circuit.getNodeList().get(node1), circuit.getNodeList().get(node2));
+            else {
+                node1 = Integer.parseInt(splitLine[1]);
+                node2 = Integer.parseInt(splitLine[2]);
+                doubleValue = Double.parseDouble(splitLine[3]);
+
+                circuit.addNodes(node1, node2);//TODO figure out how to implement this maybe change constructors to accept integers
+
+                if (splitLine[0].equals("r")) {
+                    resistor = new Resistor(doubleValue, circuit.getNodeList().get(node1), circuit.getNodeList().get(node2));
+                } else if (splitLine[0].equals("v")) {
+                    voltageSource = new VoltageSource(doubleValue, circuit.getNodeList().get(node1), circuit.getNodeList().get(node2));
+                }
             }
 
         }//end of input
