@@ -22,7 +22,7 @@ public class UserMain {
 
         Circuit circuit = Circuit.getInstance();
 
-        System.out.println("ENTER YOUR CIRCUIT ELEMENTS:\n");
+        System.out.println("ENTER YOUR CIRCUIT ELEMENTS:");
         newLine = input.nextLine();
 
         while (!(newLine.equals("end"))) {
@@ -45,9 +45,9 @@ public class UserMain {
                     voltageSource = new VoltageSource(doubleValue, circuit.getNodeList().get(node1), circuit.getNodeList().get(node2));
                 }
             }
-
             newLine = input.nextLine();
         }//end of input
+        System.out.println("ALL DONE.");
     }
 }
 
