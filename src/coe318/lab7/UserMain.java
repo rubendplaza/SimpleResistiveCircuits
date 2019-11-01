@@ -5,29 +5,24 @@ import java.util.Scanner;
 
 public class UserMain {
 
-    public static void main(String[] args) { //TODO change the main to accomodate for the new type of input
+    public static void main(String[] args) {
 
         Scanner input = new Scanner(System.in);
 
-        String newLine;
-        String[] splitLine;
-        Resistor resistor;
-        VoltageSource voltageSource;
-        double doubleValue;
-        int node1;
-        int node2;
-
-        Node nodeOne;
-        Node nodeTwo;
+        String newLine; //for taking user input by line
+        String[] splitLine; // for splitting the data of the user input line
+        double doubleValue; // for holding the double representation of the the user input value
+        int node1; // for holding the integer of the node number, need to do this in order to check how many nodes need to be instantiated when user input a number.
+        int node2; // same as above
 
         Circuit circuit = Circuit.getInstance();
 
         System.out.println("ENTER YOUR CIRCUIT ELEMENTS:");
         newLine = input.nextLine();
 
-        while (!(newLine.equals("end"))) {
+        while (!(newLine.equals("end"))) { //sentinel controlled while loop
 
-            if(newLine.equals("spice")){
+            if(newLine.equals("spice")){ // spice means print out circuit elements thus far
                 System.out.println(circuit);
             }
 
@@ -37,15 +32,19 @@ public class UserMain {
                 node2 = Integer.parseInt(splitLine[2]);
                 doubleValue = Double.parseDouble(splitLine[3]);
 
-                circuit.addNodes(node1, node2);//TODO figure out how to implement this maybe change constructors to accept integers
+                if(node1 < 0 || node2 < 0){ // exception handling
+                    throw new IllegalArgumentException("Cannot have negative node numbers, try again.");
+                }
 
-                if (splitLine[0].equals("r")) {
-                    resistor = new Resistor(doubleValue, circuit.getNodeList().get(node1), circuit.getNodeList().get(node2));
-                } else if (splitLine[0].equals("v")) {
-                    voltageSource = new VoltageSource(doubleValue, circuit.getNodeList().get(node1), circuit.getNodeList().get(node2));
+                circuit.addNodes(node1, node2); // instantiating nodes if needed
+
+                if (splitLine[0].equals("r")) { // construct a resistor
+                    new Resistor(doubleValue, circuit.getNodeList().get(node1), circuit.getNodeList().get(node2));
+                } else if (splitLine[0].equals("v")) { // construct a voltage source
+                    new VoltageSource(doubleValue, circuit.getNodeList().get(node1), circuit.getNodeList().get(node2));
                 }
             }
-            newLine = input.nextLine();
+            newLine = input.nextLine(); // gathers new user input line
         }//end of input
         System.out.println("ALL DONE.");
     }

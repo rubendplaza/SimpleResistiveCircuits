@@ -52,6 +52,17 @@ public class Circuit {
         }
     }
 
+    /**
+     * Very important method
+     * basically if they input a set of nodes that does not go in a sequential order
+     * like r 0 1 xx
+     *      v 4 7 xx
+     * then we need nodes all the way up to seven
+     * so this method will instantiate all the needed nodes
+     * based on if the greatest node number is not already in
+     * a list of instantiated nodes.
+     * */
+
     public void addNodes(int node1, int node2) {
 
         int greater = Math.max(node1, node2);
@@ -71,7 +82,7 @@ public class Circuit {
 
     @Override
 
-    public String toString(){//todo implement the output they want
+    public String toString(){
 
         String returnString = "";
 
@@ -82,7 +93,7 @@ public class Circuit {
             }
             else if(elements.get(x) instanceof Resistor){
                 if(x == elements.size()-1)
-                    returnString += elements.get(x);
+                    returnString += elements.get(x); // to not have a new line character on the last output of the circuit
                 else
                 returnString += elements.get(x) + "\n";
             }

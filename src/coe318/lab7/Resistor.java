@@ -21,6 +21,9 @@ public class Resistor {
 
         circuit = Circuit.getInstance();
 
+        if(resistance <= 0)
+            throw new IllegalArgumentException("You cannot have a negative or zero resistance, zero resistance is just a short circuit not a resistor.");
+
         this.resistance = resistance;
         this.node1 = node1;
         this.node2 = node2;
