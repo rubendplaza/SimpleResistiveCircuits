@@ -58,7 +58,7 @@ public class VoltageSource {
 
     public String toString(){
 
-        return "V" + voltageID + " " + node1 + " " + node2 + " " + voltageValue;
+        return "V" + voltageID + " " + node1 + " " + node2 + " DC " + voltageValue;
 
     }
 

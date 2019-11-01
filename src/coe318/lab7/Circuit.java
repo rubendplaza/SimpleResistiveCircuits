@@ -1,20 +1,18 @@
 package coe318.lab7;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Circuit {
 
     private static Circuit instance = null;
-    private ArrayList elements;
-    private ArrayList nodeList;
+    private ArrayList<Object> elements;
+    private ArrayList<Node> nodeList;
 
 
     private Circuit(){
 
-        elements = new ArrayList();
-        nodeList = new ArrayList();
+        elements = new ArrayList<>();
+        nodeList = new ArrayList<Node>();
 
     }
 
@@ -30,7 +28,7 @@ public class Circuit {
         return instance;
     }
 
-    public boolean add(Resistor r){
+    public void add(Resistor r){
 
         if(r.getResistance() < 0){
             throw new IllegalArgumentException("Resistance cannot be negative.");
@@ -40,22 +38,18 @@ public class Circuit {
         }
         else{
             elements.add(r);
-            return true;
         }
     }
 
-    public boolean add(VoltageSource v){
+    public void add(VoltageSource v){
 
         if(v.getVoltageValue() < 0){
             v.reverseNodes();
             elements.add(v);
-            return true;
         }
         else{
             elements.add(v);
-            return true;
         }
-
     }
 
     public void addNodes(int node1, int node2) {
@@ -63,7 +57,7 @@ public class Circuit {
         int greater = Math.max(node1, node2);
 
         if (greater > nodeList.size() - 1) {
-            for (int i = nodeList.size(); i < greater; i++) {
+            for (int i = nodeList.size(); i <= greater; i++) {
                 Node nodeToAdd = new Node();
                 nodeList.add(nodeToAdd);
             }
@@ -83,7 +77,15 @@ public class Circuit {
 
         for(int x = 0; x < elements.size(); x++){
 
-            returnString += elements.get(x) + "\n";
+            if(elements.get(x) instanceof VoltageSource){
+                returnString += elements.get(x) + "\n";
+            }
+            else if(elements.get(x) instanceof Resistor){
+                returnString += elements.get(x) + "\n";
+            }
+            else{
+                return "ERROR";
+            }
 
         }
 

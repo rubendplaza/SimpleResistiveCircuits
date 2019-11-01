@@ -27,13 +27,12 @@ public class UserMain {
 
         while (!(newLine.equals("end"))) {
 
-            splitLine = newLine.split("\\s+");
-
-            if(splitLine.equals("spice")){
+            if(newLine.equals("spice")){
                 System.out.println(circuit);
             }
 
             else {
+                splitLine = newLine.split("\\s+");
                 node1 = Integer.parseInt(splitLine[1]);
                 node2 = Integer.parseInt(splitLine[2]);
                 doubleValue = Double.parseDouble(splitLine[3]);
@@ -47,6 +46,7 @@ public class UserMain {
                 }
             }
 
+            newLine = input.nextLine();
         }//end of input
     }
 }
