@@ -81,6 +81,9 @@ public class Circuit {
                 returnString += elements.get(x) + "\n";
             }
             else if(elements.get(x) instanceof Resistor){
+                if(x == elements.size()-1)
+                    returnString += elements.get(x);
+                else
                 returnString += elements.get(x) + "\n";
             }
             else{
