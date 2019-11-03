@@ -89,7 +89,10 @@ public class Circuit {
         for(int x = 0; x < elements.size(); x++){
 
             if(elements.get(x) instanceof VoltageSource){
-                returnString += elements.get(x) + "\n";
+                if(x == elements.size()-1)
+                    returnString += elements.get(x); // to not have a new line character on the last output of the circuit
+                else
+                    returnString += elements.get(x) + "\n";
             }
             else if(elements.get(x) instanceof Resistor){
                 if(x == elements.size()-1)
