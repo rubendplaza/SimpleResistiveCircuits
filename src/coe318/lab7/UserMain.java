@@ -36,6 +36,11 @@ public class UserMain {
 
             else if(c == 'v' || c == 'r'){
                 splitLine = newLine.split("\\s+");
+
+                if(splitLine.length < 4){
+                    throw new IllegalArgumentException("You made a mistake in the input. Should be ('v'/'r')_naturalNumber_naturalNumber_value");
+                }
+
                 node1 = Integer.parseInt(splitLine[1]);
                 node2 = Integer.parseInt(splitLine[2]);
                 doubleValue = Double.parseDouble(splitLine[3]);
