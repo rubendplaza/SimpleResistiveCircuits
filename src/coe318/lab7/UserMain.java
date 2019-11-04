@@ -14,6 +14,7 @@ public class UserMain {
         double doubleValue; // for holding the double representation of the the user input value
         int node1; // for holding the integer of the node number, need to do this in order to check how many nodes need to be instantiated when user input a number.
         int node2; // same as above
+        char c;
 
         Circuit circuit = Circuit.getInstance();
 
@@ -22,17 +23,29 @@ public class UserMain {
 
         while (!(newLine.equals("end"))) { //sentinel controlled while loop
 
-            if(newLine.equals("spice")){ // spice means print out circuit elements thus far
-                System.out.println(circuit);
+            c = newLine.charAt(0); // to check if we are getting a resistor or voltage else error
+
+            if (newLine.equals("spice")) { // spice means print out circuit elements thus far
+                if(circuit.getNodeList().isEmpty()){
+                    System.out.println("YOU HAVEN'T ENTERED A CIRCUIT ELEMENT YET.");
+                }
+                else{
+                    System.out.println(circuit);
+                }
             }
 
-            else {
+            else if(c == 'v' || c == 'r'){
                 splitLine = newLine.split("\\s+");
+
+                if(splitLine.length < 4){
+                    throw new IllegalArgumentException("You made a mistake in the input. Should be ('v'/'r')_naturalNumber_naturalNumber_value");
+                }
+
                 node1 = Integer.parseInt(splitLine[1]);
                 node2 = Integer.parseInt(splitLine[2]);
                 doubleValue = Double.parseDouble(splitLine[3]);
 
-                if(node1 < 0 || node2 < 0){ // exception handling
+                if (node1 < 0 || node2 < 0) { // exception handling
                     throw new IllegalArgumentException("Cannot have negative node numbers, try again.");
                 }
 
@@ -44,11 +57,16 @@ public class UserMain {
                     new VoltageSource(doubleValue, circuit.getNodeList().get(node1), circuit.getNodeList().get(node2));
                 }
             }
+            else{
+                throw new IllegalArgumentException("You did not indicate 'v' or 'r' properly.");
+            }
             newLine = input.nextLine(); // gathers new user input line
         }//end of input
-        System.out.println("ALL DONE.");
+            System.out.println("ALL DONE.");
+
+
+        }
     }
-}
 
 
 
