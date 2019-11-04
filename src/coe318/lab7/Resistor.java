@@ -1,5 +1,10 @@
 package coe318.lab7;
 
+/**
+ * resistor class used for creating resistor
+ * circuit element which is then added to the
+ * elements list in the circuit class
+ */
 public class Resistor {
 
     static private int resistorCounter = 1;
@@ -12,11 +17,12 @@ public class Resistor {
     /**
      * Constructor for resistor:
      * updates the static variable for the amount of resistors
-     *
      * also accesses the instance of the circuit
      * if one is not created it will create one
-     *
-     * */
+     * @param resistance
+     * @param node1
+     * @param node2
+     */
     public Resistor(double resistance, Node node1, Node node2){
 
         circuit = Circuit.getInstance();
@@ -33,10 +39,10 @@ public class Resistor {
     }
 
     /**
-     * Not really sure why i would need this method
-     * not enough nodes on resistor for it to make sense for it
-     * to be in an array
-     **/
+     * used for getting nodes that the resistor is connected to
+     * returns them in an array if size 2
+     * @return nodeArray
+     */
     public Node[] getNodes(){
 
         Node[] nodeArray = new Node[2];
@@ -48,28 +54,23 @@ public class Resistor {
 
     }
 
+    /**
+     * gets the resistance value
+     * @return resistance
+     */
     public double getResistance(){
-        return this.resistance;
+        return resistance;
     }
 
     @Override
 
-    public String toString(){
-                                    //assuming this is where the getnodes method would be used but unnecessary
+    /**
+     * for printing out the resistor to the std output
+     * with the desired format
+     * @return String
+     */
+    public String toString() {
         return "R" + resistorID + " " + node1 + " " + node2 + " " + resistance;
-
     }
-
-    public static void main(String[] args) {
-
-        Node node1 = new Node();
-        Node node2 = new Node();
-
-        Resistor resistor = new Resistor(50, node1, node2);
-
-        System.out.println(resistor);
-
-    }
-
 
 }
