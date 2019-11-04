@@ -28,3 +28,4 @@ hs_err_pid*
 SimpleResistiveCircuits.iml
 SimpleResistiveCircuits.ipr
 SimpleResistiveCircuits.iws
+*.kotlin_module
