@@ -34,14 +34,15 @@ public class VoltageSource {
         this.voltageValue = voltageValue;
     }
 
-    public Node[] getNodes() {
+    public Node getNode1(){
+        return node1;
+    }
+    public Node getNode2(){
+        return node2;
+    }
 
-        Node[] nodeArray = new Node[2];
-
-        nodeArray[0] = node1;
-        nodeArray[1] = node2;
-
-        return nodeArray;
+    public int getNodeID(Node node){
+        return node.getNodeNum();
     }
 
     public void reverseNodes(){
@@ -50,7 +51,7 @@ public class VoltageSource {
         node2 = node1;
         node1 = temp;
 
-        voltageValue = voltageValue * -1;
+        setVoltageValue(voltageValue*-1);
 
     }
 

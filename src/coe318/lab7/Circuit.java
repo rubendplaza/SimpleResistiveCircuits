@@ -80,6 +80,10 @@ public class Circuit {
         return nodeList;
     }
 
+    public ArrayList getElementsList(){
+        return elements;
+    }
+
     @Override
 
     public String toString(){
