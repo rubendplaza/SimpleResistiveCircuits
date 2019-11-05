@@ -42,7 +42,7 @@ public class Circuit {
      * method to add a resistor to the circuit elements array list
      * throws exceptions based on the value of the resistance or if one
      * of its nodes are not instantiated
-     * @param r
+     * @param r the resistor object to be added
      */
     public void add(Resistor r){
 
@@ -61,7 +61,7 @@ public class Circuit {
      * method to add a voltage source to the circuit elements array list
      * throws exception if one of its nodes are not instantiated
      * calls the reverseNodes method if the voltage value is negative
-     * @param v
+     * @param v the voltage source to be added
      */
     public void add(VoltageSource v){
 

@@ -9,7 +9,7 @@ public class UserMain {
 
     /**
      * main method for taking in user input
-     * @param args
+     * @param args system arguments
      */
     public static void main(String[] args) {
 

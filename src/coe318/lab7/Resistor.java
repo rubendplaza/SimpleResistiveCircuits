@@ -19,9 +19,9 @@ public class Resistor {
      * updates the static variable for the amount of resistors
      * also accesses the instance of the circuit
      * if one is not created it will create one
-     * @param resistance
-     * @param node1
-     * @param node2
+     * @param resistance resistance value
+     * @param node1 first node connection
+     * @param node2 second node connection
      */
     public Resistor(double resistance, Node node1, Node node2){
 

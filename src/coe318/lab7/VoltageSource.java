@@ -15,9 +15,9 @@ public class VoltageSource {
 
     /**
      * this is constructor for voltage source
-     * @param voltageValue
-     * @param node1
-     * @param node2
+     * @param voltageValue voltage value
+     * @param node1 first node connection
+     * @param node2 second node connection
      */
     public VoltageSource(double voltageValue, Node node1, Node node2){
 
@@ -46,7 +46,7 @@ public class VoltageSource {
 
     /**
      * setter for voltage value
-     * @param voltageValue
+     * @param voltageValue voltage value
      */
     public void setVoltageValue(double voltageValue){
         this.voltageValue = voltageValue;
@@ -70,7 +70,7 @@ public class VoltageSource {
 
     /**
      * getter for node ID
-     * @param node
+     * @param node node object
      * @return node ID
      */
     public int getNodeID(Node node){
