@@ -43,7 +43,7 @@ public class UserMain {
             else if(c == 'v' || c == 'r'){
                 splitLine = newLine.split("\\s+");
 
-                if(splitLine.length < 4){
+                if(splitLine.length < 4 || splitLine.length > 4){
                     throw new IllegalArgumentException("You made a mistake in the input. Should be ('v'/'r')_naturalNumber_naturalNumber_value");
                 }
 
